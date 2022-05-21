@@ -31,8 +31,4 @@ public class PetClinicApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PetClinicApplication.class, args);
 	}
-public add()
-{
-	2+3=5;
-}
 }
