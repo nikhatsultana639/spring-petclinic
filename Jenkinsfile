@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'built-In' }
+    agent { label 'built-in' }
     triggers { pollSCM('* * * * *') }
     stages {
         stage('SourceCode') {
