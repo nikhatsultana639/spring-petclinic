@@ -7,15 +7,17 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/nikhatsultana639/spring-petclinic.git'
             }
         }
-        stage('Build') {
+        stage('Build the Code and sonarqube-analysis') {
             steps {
-                sh 'mvn clean package'
+                withSonarQubeEnv('SONAR_LATEST') {
+                    sh script: "mvn package sonar:sonar"
+                }
+
             }
         }
-        stage('Archive and Test Results') {
+        stage('reporting') {
             steps {
-               junit '**/surefire-reports/*.xml'
-               archiveArtifacts artifacts: '**/*.war', followSymlinks: false
+                junit testResults: '**/surefire-reports/*.xml'
             }
         }
     }
