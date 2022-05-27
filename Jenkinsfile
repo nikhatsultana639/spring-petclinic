@@ -3,9 +3,7 @@ pipeline {
     options { 
         timeout(time: 1, unit: 'HOURS')
     }
-    triggers {
-        cron('0 * * * *')
-    }
+    
     stages {
         stage('Source Code') {
             steps {
