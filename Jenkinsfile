@@ -34,6 +34,7 @@ pipeline {
                     // Maven options.
                     deployerId: 'spc-deployer',
                 )
+      rtPublishBuildInfo serverId: 'jfrogArtifact'
 
             }
         }
