@@ -17,8 +17,8 @@ pipeline {
                 rtMavenDeployer (
                     id: 'spc-deployer',
                     serverId: 'jfrogArtifact',
-                    releaseRepo: 'libs-release-local',
-                    snapshotRepo: 'libs-snapshot-local',
+                    releaseRepo: 'nikhat-libs-release-local',
+                    snapshotRepo: 'nikhat-libs-snapshot-local',
 
                 )
             }
