@@ -11,7 +11,6 @@ pipeline {
         stage('build image using docker file') {
             agent { label 'docker' }
             steps {
-              //** sh 'cd spring-petclinic'  **//
                 sh 'sudo docker image build -t spc:1.0 .'
             }
         }
@@ -31,22 +30,22 @@ pipeline {
                 sh 'kubectl apply -f spcdeployservice.yaml' 
             }
         }
-      //**  stage('deploy to production env') {
-          //**  agent { label 'kubeclust' }
-           //** steps {
-               //** sh 'kubectl create deployment production-pod --image=nikhatsultana/spc:1.0  -n=production --replicas=2'
-           //** }
-       //** }
-     //**   stage('deploy to developer env') { 
-       //**     agent { label 'kubeclust' }
-        //**    steps {
-            //**    sh 'kubectl create deployment developer-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
-         //**   }
+        stage('deploy to production env') {
+            agent { label 'kubeclust' }
+            steps {
+                sh 'kubectl create deployment prod-pod --image=nikhatsultana/spc:1.0  -n=production --replicas=2'
+            }
+        }
+        stage('deploy to developer env') { 
+            agent { label 'kubeclust' }
+            steps {
+                sh 'kubectl create deployment dev-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
+           }
       //**  }
         stage('deploy to qa env') {
             agent { label 'kubeclust' }
             steps {
-                sh 'kubectl create deployment qa-pod --image=nikhatsultana/spc:1.0  -n=qa --replicas=2'
+                sh 'kubectl create deployment test-pod --image=nikhatsultana/spc:1.0  -n=qa --replicas=2'
             }
         }
     }
