@@ -28,7 +28,25 @@ pipeline {
         stage('deploy to kubeclust') {
             agent { label 'kubeclust' }
             steps {
-                sh ' kubectl apply -f spcdeployservice.yaml' 
+                sh 'kubectl apply -f spcdeployservice.yaml' 
+            }
+        }
+        stage('deploy to production env') {
+            agent { label 'production' }
+            steps {
+                sh 'kubectl create deployment production-pod --image=nikhatsultana/spc:1.0  -n=production --replicas=2'
+            }
+        }
+        stage('deploy to developer env') {
+            agent { label 'developer' }
+            steps {
+                sh 'kubectl create deployment developer-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
+            }
+        }
+        stage('deploy to qa env') {
+            agent { label 'qa' }
+            steps {
+                sh 'kubectl create deployment qa-pod --image=nikhatsultana/spc:1.0  -n=qa --replicas=2'
             }
         }
     }
