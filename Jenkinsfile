@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh 'kubectl create deployment dev-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
            }
-      //**  }
+        }
         stage('deploy to qa env') {
             agent { label 'kubeclust' }
             steps {
