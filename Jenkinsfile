@@ -12,7 +12,7 @@ pipeline {
             agent { label 'docker' }
             steps {
               //** sh 'cd spring-petclinic'  **//
-                sh 'docker image build -t spc:1.0 .'
+                sh 'sudo docker image build -t spc:1.0 .'
             }
         }
         stage('push image to docker hub') {
