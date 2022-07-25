@@ -28,7 +28,7 @@ pipeline {
         stage('deploy to kubeclust') {
             agent { label 'kubeclust' }
             steps {
-                sh 'sudo kubectl apply -f spcdeployservice.yaml' 
+                sh ' kubectl apply -f spcdeployservice.yaml' 
             }
         }
     }
