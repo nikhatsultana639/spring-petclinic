@@ -11,7 +11,7 @@ pipeline {
         stage('build image using docker file') {
             agent { label 'docker' }
             steps {
-                sh 'cd spring-petclinic'
+              //** sh 'cd spring-petclinic'  **//
                 sh 'docker image build -t spc:1.0 .'
             }
         }
