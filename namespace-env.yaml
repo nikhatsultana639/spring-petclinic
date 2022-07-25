@@ -6,11 +6,18 @@ items:
   kind: Namespace
   metadata:
     name: production
+    labels:
+      name: production
 - apiVersion: v1
   kind: Namespace
   metadata:
     name: developer
+    labels:
+      name: developer
 - apiVersion: v1
   kind: Namespace
   metadata:
-    name:qa
+    name: qa
+    labels:
+      name: qa
+    
