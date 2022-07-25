@@ -1,4 +1,5 @@
 pipeline {
+    agent none
     stages {
         stage('Source Code') {
             agent { label 'docker' && 'kubeclust' }
