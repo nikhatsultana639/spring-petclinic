@@ -5,12 +5,12 @@ items:
 - apiVersion: v1
   kind: Namespace
   metadata:
-    name: Production
+    name: production
 - apiVersion: v1
   kind: Namespace
   metadata:
-    name: Developer
+    name: developer
 - apiVersion: v1
   kind: Namespace
   metadata:
-    name: QA
+    name:qa
