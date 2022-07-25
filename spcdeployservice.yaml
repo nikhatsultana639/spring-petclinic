@@ -4,10 +4,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spc-deployment
+  namespace: production
+  namespace: developer
+  namespace: qa
   labels:
     app: spcapp
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: spcapp
