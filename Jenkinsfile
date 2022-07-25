@@ -37,12 +37,12 @@ pipeline {
                 sh 'kubectl create deployment production-pod --image=nikhatsultana/spc:1.0  -n=production --replicas=2'
             }
         }
-       //** stage('deploy to developer env') {
-            agent { label 'kubeclust' }
-            steps {
-                sh 'kubectl create deployment developer-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
-            }
-        } **//
+       //** stage('deploy to developer env') { 
+       //**     agent { label 'kubeclust' }
+       //**     steps {
+       //**         sh 'kubectl create deployment developer-pod --image=nikhatsultana/spc:1.0  -n=developer --replicas=2'
+       //**     }
+     //**   }
         stage('deploy to qa env') {
             agent { label 'kubeclust' }
             steps {
