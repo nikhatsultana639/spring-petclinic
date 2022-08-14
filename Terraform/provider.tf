@@ -1,4 +1,6 @@
 variable "client_secret" {
+  type    = string
+    default = "iP48Q~p9Mgcv~6E2nXNezBacE4eyowsSwXBLZaY0"
 }
 
 # We strongly recommend using the required_providers block to set the
