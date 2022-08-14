@@ -35,7 +35,7 @@ pipeline {
             steps {
                  script {
               //  dir('/var/lib/jenkins/workspace/withTerraform/Terraform') {
-                    azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform destroy']], principalCredentialId: 'jenkins-sp-secret'
+                    azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform destroy -auto-approve']], principalCredentialId: 'jenkins-sp-secret'
     }
         }
          }
