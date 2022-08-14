@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+    stages {
+        stage('source code') {
+            steps {
+                git url: 'https://github.com/nikhatsultana639/spring-petclinic.git', 
+                branch: 'main'
+            }
+        }
+        stage('terraforminit') {
+            steps {
+                script {
+             //  dir('/var/lib/jenkins/workspace/withTerraform/Terraform') {
+                     azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform init']], principalCredentialId: 'jenkins-sp-secret'
+               }
+            }
+        }
+         stage('terraformplan') {
+            steps {
+                 script {
+               // dir('/var/lib/jenkins/workspace/withTerraform/Terraform') {
+                     azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform plan']], principalCredentialId: 'jenkins-sp-secret'
+            }
+         }
+         }
+           stage('terraformapply') {
+            steps {
+                 script {
+               //  dir('/var/lib/jenkins/workspace/withTerraform/Terraform') {
+                     azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform apply -auto-approve']], principalCredentialId: 'jenkins-sp-secret'
+           }
+           }
+           }
+            stage('terraformdestroy') {
+            steps {
+                 script {
+              //  dir('/var/lib/jenkins/workspace/withTerraform/Terraform') {
+                    azureCLI commands: [[exportVariablesString: '', script: 'cd /var/lib/jenkins/workspace/withTerraform/Terraform && terraform destroy']], principalCredentialId: 'jenkins-sp-secret'
+    }
+        }
+         }
+}
+}
