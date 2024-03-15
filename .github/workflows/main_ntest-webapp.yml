@@ -57,6 +57,6 @@ jobs:
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'ntest-webapp'
-          slot-name: 'Production'
-          package: '*.jar'
+          # slot-name: 'Production'
+          package: 'spring-petclinic-2.7.0-SNAPSHOT.jar'
           
